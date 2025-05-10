@@ -24,9 +24,6 @@ Leveraging stratapilot, we built **FRIDAY**, a self-improving AI assistant capab
    :width: 100%
    :align: center
 
-**Project Homepage:** `stratapilot`_
-
-
 Tutorials
 ==================================
 
@@ -56,7 +53,6 @@ Community
 
 Join our community to connect with other enthusiasts, share your tools and demos, and collaborate on innovative projects. Stay engaged and get the latest updates by following us:
 
-- **Discord**: Join our Discord server for real-time discussions, support, and to share your work with the community. Click here to join: `Discord Server <https://discord.gg/PCeh4XbhjB>`_ .
 - **Twitter**: Follow us on Twitter `@oscopilot <https://x.com/keaistrata>`_ for the latest news, updates, and highlights from our community.
 
 
