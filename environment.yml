@@ -1,4 +1,4 @@
-name: oscopilot
+name: stratapilot
 channels:
   - defaults
 dependencies:
