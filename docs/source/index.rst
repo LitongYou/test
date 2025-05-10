@@ -53,7 +53,7 @@ Community
 
 Join our community to connect with other enthusiasts, share your tools and demos, and collaborate on innovative projects. Stay engaged and get the latest updates by following us:
 
-- **Twitter**: Follow us on Twitter `@oscopilot <https://x.com/keaistrata>`_ for the latest news, updates, and highlights from our community.
+- **Twitter**: Follow us on Twitter `@keaistrata <https://x.com/keaistrata>`_ for the latest news, updates, and highlights from our community.
 
 
 Contributing
