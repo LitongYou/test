@@ -1,11 +1,9 @@
-.. OS-Copilot documentation master file, created by
+.. Stratapilot documentation master file, created by
    sphinx-quickstart on Thu Feb 29 15:23:26 2024.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-:github_url: https://github.com/OS-Copilot/OS-Copilot
-
-.. _OS-Copilot: https://os-copilot.github.io/
+:github_url: https://github.com/KAIST-KEAI/stratapilot
 
 Introduction
 ==================================
@@ -14,19 +12,19 @@ Introduction
    :width: 100%
    :align: center
 
-**OS-Copilot** is a pioneering conceptual framework for building generalist computer agents on Linux and MacOS, which provides a unified interface for app interactions in the heterogeneous OS ecosystem.
+**stratapilot** is a pioneering conceptual framework for building generalist computer agents on Linux and MacOS, which provides a unified interface for app interactions in the heterogeneous OS ecosystem.
 
 .. image:: _static/framework.png
    :width: 100%
    :align: center
 
-Leveraging OS-Copilot, we built **FRIDAY**, a self-improving AI assistant capable of solving general computer tasks.
+Leveraging stratapilot, we built **FRIDAY**, a self-improving AI assistant capable of solving general computer tasks.
 
 .. image:: _static/FRIDAY.png
    :width: 100%
    :align: center
 
-**Project Homepage:** `OS-Copilot`_
+**Project Homepage:** `stratapilot`_
 
 
 Tutorials
@@ -70,25 +68,25 @@ Contributing
 Ways to Contribute
 ----------------------
 
-- **Code:** Enhance OS-Copilot by adding new features, fixing bugs, or optimizing existing tools.
+- **Code:** Enhance stratapilot by adding new features, fixing bugs, or optimizing existing tools.
 
-- **Documentation:** Help make OS-Copilot more accessible by improving or expanding our documentation.
+- **Documentation:** Help make stratapilot more accessible by improving or expanding our documentation.
 
-- **Feedback and Ideas:** Share your insights and suggestions to make OS-Copilot even better.
+- **Feedback and Ideas:** Share your insights and suggestions to make stratapilot even better.
 
-- **Advocacy:** Spread the word about OS-Copilot and help grow our community.
+- **Advocacy:** Spread the word about stratapilot and help grow our community.
 
 
 
 Citation
 ==================================
 
-For more detailed information about OS-Copilot and FRIDAY, please refer to our latest research paper:
+For more detailed information about stratapilot and FRIDAY, please refer to our latest research paper:
 
 .. code-block:: bibtex
    
    @misc{wu2024oscopilot,
-      title={OS-Copilot: Towards Generalist Computer Agents with Self-Improvement}, 
+      title={stratapilot: Towards Generalist Computer Agents with Self-Improvement}, 
       author={Zhiyong Wu and Chengcheng Han and Zichen Ding and Zhenmin Weng and Zhoumianze Liu and Shunyu Yao and Tao Yu and Lingpeng Kong},
       year={2024},
       eprint={2402.07456},
