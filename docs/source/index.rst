@@ -8,19 +8,19 @@
 Introduction
 ==================================
 
-.. image:: _static/demo.png
+.. image:: _static/strata_demo.png
    :width: 100%
    :align: center
 
 **stratapilot** is a pioneering conceptual framework for building generalist computer agents on Linux and MacOS, which provides a unified interface for app interactions in the heterogeneous OS ecosystem.
 
-.. image:: _static/framework.png
+.. image:: _static/strata_framework.png
    :width: 100%
    :align: center
 
 Leveraging stratapilot, we built **FRIDAY**, a self-improving AI assistant capable of solving general computer tasks.
 
-.. image:: _static/FRIDAY.png
+.. image:: _static/strata_code.png
    :width: 100%
    :align: center
 
