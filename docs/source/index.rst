@@ -74,15 +74,6 @@ Ways to Contribute
 
 
 
-Citation
-==================================
-
-For more detailed information about stratapilot and FRIDAY, please refer to our latest research paper:
-
-.. code-block:: bibtex
-
-
-
 .. toctree::
    :hidden:
    :maxdepth: 2
