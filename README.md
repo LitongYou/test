@@ -3,7 +3,7 @@
 <div align="center">
 
 <p align="center">
-  <img src='pic/demo.png' width="100%">
+  <img src='pic/strata_demo.png' width="100%">
 </p>
 
 </div>
@@ -13,13 +13,13 @@
 - **StrataPilot** is a pioneering conceptual framework for building generalist computer agents on Linux and MacOS, which provides a unified interface for app interactions in the heterogeneous OS ecosystem.
   
 <p align="center">
-  <img src='pic/framework.png' width="75%">
+  <img src='pic/strata_framework.png' width="75%">
 </p>
 
 - Leveraging StrataPilot, we built **FRIDAY**, a self-improving AI assistant capable of solving general computer tasks.
 
 <p align="center">
-  <img src='pic/FRIDAY.png' width="75%">
+  <img src='pic/strata_code.png' width="75%">
 </p>
 
 ## ⚡️ Quickstart
