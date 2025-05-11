@@ -80,15 +80,7 @@ Citation
 For more detailed information about stratapilot and FRIDAY, please refer to our latest research paper:
 
 .. code-block:: bibtex
-   
-   @misc{wu2024oscopilot,
-      title={stratapilot: Towards Generalist Computer Agents with Self-Improvement}, 
-      author={Zhiyong Wu and Chengcheng Han and Zichen Ding and Zhenmin Weng and Zhoumianze Liu and Shunyu Yao and Tao Yu and Lingpeng Kong},
-      year={2024},
-      eprint={2402.07456},
-      archivePrefix={arXiv},
-      primaryClass={cs.AI}
-   }
+
 
 
 .. toctree::
