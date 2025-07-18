@@ -43,3 +43,8 @@ html_theme_options = {
 html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
 
 html_static_path = ['_static']
+
+html_context = {
+"display_github": True, # Add 'Edit on Github' link instead of 'View page source'
+"last_updated": True,
+}
