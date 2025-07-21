@@ -1,7 +1,7 @@
 OS-Copilot Config
 ==============================
 
-.. automodule:: strata.utils.GlobalConfig
+.. automodule:: strata.utils.config
    :members:
    :undoc-members:
    :show-inheritance:
