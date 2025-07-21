@@ -1,3 +1,4 @@
+:github_url: https://github.com/OS-Copilot/OS-Copilot
 
 .. image:: _static/logo.png
    :align: center
