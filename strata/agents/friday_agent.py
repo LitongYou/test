@@ -4,7 +4,7 @@ import json
 import logging
 import sys
 import re
-from strata.prompts.friday_pt import prompt
+from strata.prompts.friday_pt import templates
 from strata.utils import TaskStatusCode, InnerMonologue, ExecutionState, JudgementResult, RepairingResult
 
 class FridayAgent(BaseAgent):
@@ -34,10 +34,10 @@ class FridayAgent(BaseAgent):
         tool_manager = ToolManager(config.generated_tool_repo_path)
 
         # Instantiate components with their prompts and shared tool manager
-        self.planner = planner_cls(prompt['planning_prompt'])
-        self.retriever = retriever_cls(prompt['retrieve_prompt'], tool_manager)
+        self.planner = planner_cls(templates['planning_prompt'])
+        self.retriever = retriever_cls(templates['retrieve_prompt'], tool_manager)
         self.executor = executor_cls(
-            prompt['execute_prompt'],
+            templates['execute_prompt'],
             tool_manager,
             config.max_repair_iterations
         )
