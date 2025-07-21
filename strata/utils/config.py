@@ -4,7 +4,7 @@ import logging
 import argparse
 from pathlib import Path
 from typing import Dict, Any, Optional
-from strata.utils.utils import random_string as gen_id, get_project_root_path as project_root
+from strata.utils.utils import random_id as gen_id, ‎get_repo_root as project_root
 import dotenv
 
 dotenv.load_dotenv(dotenv_path=".env", override=True)
