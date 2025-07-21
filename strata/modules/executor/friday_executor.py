@@ -1,5 +1,5 @@
 from strata.modules.base_module import KernelBase
-from strata.tool_repository.manager.tool_manager import get_open_api_doc_path
+from strata.tools.manager.tool_manager import get_open_api_doc_path
 import re
 import json
 import subprocess
