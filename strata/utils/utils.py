@@ -145,7 +145,7 @@ def cosine_sim(vec1: np.ndarray, vec2: np.ndarray) -> float:
     return np.dot(vec1, vec2) / (np.linalg.norm(vec1) * np.linalg.norm(vec2))
 
 
-def query_llm(system_msg: str, user_msg: str, model: OpenAI, tag: str = "") -> str:
+def query_llm(system_msg: str, user_msg: str, model: OpenAIWrapper, tag: str = "") -> str:
     conversation = [
         {"role": "system", "content": system_msg},
         {"role": "user", "content": user_msg}
