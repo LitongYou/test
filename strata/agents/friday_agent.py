@@ -5,7 +5,7 @@ import logging
 import sys
 import re
 from strata.prompts.friday_pt import templates
-from strata.utils import TaskStatusCode, InnerMonologue, ExecutionState, JudgementResult, RepairingResult
+from strata.utils.schema import StatusCode, CognitiveTrace, EvalFrame, ReviewOutcome, PatchOutcome
 
 class FridayAgent(BaseAgent):
     """
@@ -43,8 +43,8 @@ class FridayAgent(BaseAgent):
         )
 
         self.score = config.score
-        self.task_status = TaskStatusCode.START
-        self.inner_monologue = InnerMonologue()
+        self.task_status = StatusCode.BOOT
+        self.inner_monologue = CognitiveTrace()
 
         # Verify system compatibility
         try:
@@ -83,13 +83,13 @@ class FridayAgent(BaseAgent):
                 print(f"Subtask execution aborted. Error: {err}")
                 break
 
-    def self_refining(self, tool_name, execution_state: ExecutionState):
+    def self_refining(self, tool_name, execution_state: EvalFrame):
         """
         Evaluate execution results and decide whether to repair or replan.
 
         Args:
             tool_name (str): Identifier of the current tool or subtask.
-            execution_state (ExecutionState): Encapsulates output, error state, code, etc.
+            execution_state (EvalFrame): Encapsulates output, error state, code, etc.
 
         Returns:
             (bool, bool): Tuple indicating (is_complete, needs_replan).
@@ -175,7 +175,7 @@ class FridayAgent(BaseAgent):
             original_task (object): The root task context.
 
         Returns:
-            ExecutionState: Contains execution results, errors, and metadata.
+            EvalFrame: Contains execution results, errors, and metadata.
         """
         node = self.planner.tool_node[tool_name]
         desc, node_type = node.description, node.node_type
@@ -212,7 +212,7 @@ class FridayAgent(BaseAgent):
             print("Execution error:", err)
             return
 
-        return ExecutionState(state, node_type, desc, code, result, relevant)
+        return EvalFrame(state, node_type, desc, code, result, relevant)
 
     def judging(self, tool_name, state, code, description):
         """
@@ -225,7 +225,7 @@ class FridayAgent(BaseAgent):
             description (str): Textual description of the subtask.
 
         Returns:
-            JudgementResult: Contains status ("Complete", "Amend", "Replan"), critique, and score.
+            ReviewOutcome: Contains status ("Complete", "Amend", "Replan"), critique, and score.
         """
         try:
             critique, status, score = self.executor.judge_tool(
@@ -233,9 +233,9 @@ class FridayAgent(BaseAgent):
             )
         except Exception as err:
             print("Judgement API error:", err)
-            return JudgementResult("Error", "", 0)
+            return ReviewOutcome("Error", "", 0)
 
-        return JudgementResult(status, critique, score)
+        return ReviewOutcome(status, critique, score)
 
     def replanning(self, tool_name, reasoning):
         """
@@ -270,7 +270,7 @@ class FridayAgent(BaseAgent):
             status (str): Current status, expected to be "Amend".
 
         Returns:
-            RepairingResult: Contains new status, updated code, critique, score, and result.
+            PatchOutcome: Contains new status, updated code, critique, score, and result.
         """
         node = self.planner.tool_node[tool_name]
         next_action = node.next_action
@@ -308,10 +308,10 @@ class FridayAgent(BaseAgent):
             else:
                 status = "Amend"
 
-        return RepairingResult(status, code, critique, score, result)
+        return PatchOutcome(status, code, critique, score, result)
 
     def reset_inner_monologue(self):
         """
         Reset the agent's internal monologue tracker.
         """
-        self.inner_monologue = InnerMonologue()
+        self.inner_monologue = CognitiveTrace()
