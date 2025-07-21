@@ -1,4 +1,4 @@
-from strata.tools.manager.action_node import ActionNode
+from strata.tools.manager.action_node import WorkflowUnit
 from collections import defaultdict, deque
 from strata.modules.base_module import KernelBase
 from strata.tools.manager.tool_manager import get_open_api_description_pair
@@ -127,7 +127,7 @@ class TaskOrchestrator(KernelBase):
             desc = node['description']
             kind = node['type']
             deps = node['dependencies']
-            self.tool_node[name] = ActionNode(name, desc, kind)
+            self.tool_node[name] = WorkflowUnit(name, desc, kind)
             self.tool_graph[name] = deps
             for dep in deps:
                 self.tool_node[dep].next_action[name] = desc
@@ -146,7 +146,7 @@ class TaskOrchestrator(KernelBase):
             node_desc = entry['description']
             node_type = entry['type']
             node_links = entry['dependencies']
-            self.tool_node[node_name] = ActionNode(node_name, node_desc, node_type)
+            self.tool_node[node_name] = WorkflowUnit(node_name, node_desc, node_type)
             self.tool_graph[node_name] = node_links
             for upstream in node_links:
                 self.tool_node[upstream].next_action[node_name] = node_desc
