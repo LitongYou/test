@@ -1,7 +1,7 @@
 Base Agent
 ==============================
 
-.. automodule:: strata.agents.base_agent
+.. autoclass:: strata.agents.base_agent.BaseAgent
    :members:
    :undoc-members:
    :show-inheritance:
