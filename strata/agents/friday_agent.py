@@ -1,11 +1,11 @@
-from stratapilot.agents.base_agent import BaseAgent
-from stratapilot.utils import check_os_version
+from strata.agents.base_agent import BaseAgent
+from strata.utils import check_os_version
 import json
 import logging
 import sys
 import re
-from stratapilot.prompts.friday_pt import prompt
-from stratapilot.utils import TaskStatusCode, InnerMonologue, ExecutionState, JudgementResult, RepairingResult
+from strata.prompts.friday_pt import prompt
+from strata.utils import TaskStatusCode, InnerMonologue, ExecutionState, JudgementResult, RepairingResult
 
 class FridayAgent(BaseAgent):
     """
