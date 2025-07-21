@@ -5,3 +5,9 @@ Large Language Models
    :members:
    :undoc-members:
    :show-inheritance:
+
+
+.. autoclass:: strata.utils.llms.OllamaWrapper
+   :members:
+   :undoc-members:
+   :show-inheritance:
