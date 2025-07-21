@@ -1,4 +1,4 @@
-OS-Copilot Config
+Strata Config
 ==============================
 
 .. automodule:: strata.utils.config
