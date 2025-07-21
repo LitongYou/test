@@ -1,8 +1,7 @@
 import os
 from strata.utils.config import GlobalConfig
 from typing import Optional, Union, List
-from strata.utils.schema import EnvState
-
+from strata.environments.env import EnvState
 
 class BaseEnv:
     """
