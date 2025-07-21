@@ -1,6 +1,6 @@
 import re
 import json
-from stratapilot.utils import get_os_version
+from strata.utils import get_os_version
 
 class BaseAgent:
     """
