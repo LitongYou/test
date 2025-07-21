@@ -13,6 +13,7 @@ import tqdm
 import dotenv
 import sys
 from bs4 import BeautifulSoup
+from typing import Tuple
 from typing import Any, Dict, List, Optional, Union, Generator
 
 from strata.prompts.general_pt import extraction_prompts as gpt_prompts
