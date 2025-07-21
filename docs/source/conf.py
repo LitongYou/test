@@ -43,3 +43,11 @@ html_theme_options = {
 html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
 
 html_static_path = ['_static']
+
+html_context = {
+    "display_github": True, # Integrate GitHub
+    "github_user": "LitongYou", # Username
+    "github_repo": "test", # Repo name
+    "github_version": "master", # Version
+    "conf_py_path": "/docs/source/", # Path in the checkout to the docs root
+}
