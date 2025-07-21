@@ -1,8 +1,8 @@
 # This code is based on Open Interpreter. Original source: https://github.com/OpenInterpreter/open-interpreter
 from strata.environments.base_env import BaseEnv
-from strata.environments import AppleScript
-from strata.environments import PythonJupyterEnv
-from strata.environments import Shell
+from strata.environments.applescript_env import AppleScript
+#from strata.environments import PythonJupyterEnv
+#from strata.environments import Shell
 #from strata.utils.schema import EnvState
 
 import os
