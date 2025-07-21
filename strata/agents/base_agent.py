@@ -1,6 +1,7 @@
 import re
 import json
-from strata.utils import get_os_version
+from strata.utils import fetch_os_info
+
 
 class BaseAgent:
     """
@@ -18,7 +19,7 @@ class BaseAgent:
         Currently, only the system version is initialized here. Subclasses may override
         or extend this to configure additional properties.
         """
-        self.system_version = get_os_version()
+        self.system_version = fetch_os_info()
 
     def extract_information(self, message: str, begin_str: str = '[BEGIN]', end_str: str = '[END]') -> list[str]:
         """
