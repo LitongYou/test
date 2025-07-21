@@ -1,9 +1,9 @@
 # This code is based on Open Interpreter. Original source: https://github.com/OpenInterpreter/open-interpreter
-from stratapilot.environments import BaseEnv
-from stratapilot.environments import AppleScript
-from stratapilot.environments import PythonJupyterEnv
-from stratapilot.environments import Shell
-from stratapilot.utils.schema import EnvState
+from strata.environments import BaseEnv
+from strata.environments import AppleScript
+from strata.environments import PythonJupyterEnv
+from strata.environments import Shell
+from strata.utils.schema import EnvState
 
 import os
 import subprocess
