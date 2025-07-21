@@ -1,7 +1,8 @@
 import os
 from strata.utils.config import GlobalConfig
 from typing import Optional, Union, List
-from strata.environments.env import EnvState
+from strata.utils.schema import SessionSnapshot
+
 
 class BaseEnv:
     """
@@ -29,7 +30,7 @@ class BaseEnv:
         if not os.path.exists(self.working_dir):
             os.makedirs(self.working_dir)
 
-        self.env_state: Union[EnvState, None] = None
+        self.env_state: Union[SessionSnapshot, None] = None
 
     def step(self, code):
         """
@@ -90,7 +91,7 @@ class BaseEnv:
 
         return "\n".join(details)
         
-    def step(self, _command) -> EnvState:
+    def step(self, _command) -> SessionSnapshot:
         """
         Executes a command within the environments.
 
@@ -152,5 +153,5 @@ class BaseEnv:
 
 if __name__ == '__main__':
     env = BaseEnv()
-    env.env_state = EnvState()
+    env.env_state = SessionSnapshot()
     # result = env.observe()
