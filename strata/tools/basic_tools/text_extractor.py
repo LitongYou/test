@@ -1,5 +1,5 @@
-from stratapilot.utils.utils import send_chat_prompts as dispatch_chat_tasks
-from stratapilot.prompts.friday_pt import prompt as prompt_bundle
+from strata.utils.utils import send_chat_prompts as dispatch_chat_tasks
+from strata.prompts.friday_pt import prompt as prompt_bundle
 
 
 class ContentFetcher:
