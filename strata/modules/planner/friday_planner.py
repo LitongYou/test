@@ -2,7 +2,7 @@ from strata.tools.manager.action_node import ActionNode
 from collections import defaultdict, deque
 from strata.modules.base_module import KernelBase
 from strata.tools.manager.tool_manager import RegistryHandler
-from strata.utils.utils import query_llm, api_exception_mechanism
+from strata.utils.utils import query_llm
 import json
 import sys
 import logging
