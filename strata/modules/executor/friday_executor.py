@@ -4,7 +4,7 @@ import re
 import json
 import subprocess
 from pathlib import Path
-from strata.utils.utils import query_llm, api_exception_mechanism
+from strata.utils.utils import query_llm
 
 
 class TaskHandler(KernelBase):
@@ -21,7 +21,7 @@ class TaskHandler(KernelBase):
         with open(self.api_doc_path) as file:
             self.api_documentation = json.load(file)
 
-    @api_exception_mechanism(max_retries=3)
+    #@api_exception_mechanism(max_retries=3)
     def compose_tool(self, name, description, kind, dependencies, references):
         ref_snippets = json.dumps(references)
         if kind == 'Python':
@@ -59,7 +59,7 @@ class TaskHandler(KernelBase):
         print("<exec_state>\n" + str(outcome) + "\n</exec_state>")
         return outcome
 
-    @api_exception_mechanism(max_retries=3)
+    #@api_exception_mechanism(max_retries=3)
     def assess_tool(self, script, summary, state, next_plan):
         plan_json = json.dumps(next_plan)
         sys_msg = self.prompt_config['JUDGE_SYS']
@@ -77,7 +77,7 @@ class TaskHandler(KernelBase):
         parsed = self._parse_json(reply)
         return parsed['reasoning'], parsed['status'], parsed['score']
 
-    @api_exception_mechanism(max_retries=3)
+    #@api_exception_mechanism(max_retries=3)
     def revise_tool(self, source_code, summary, kind, state, feedback, dependencies):
         key = 'PYTHON_SYS_FIX' if kind == 'Python' else 'SHELL_SYS_FIX'
         val = 'PYTHON_USER_FIX' if kind == 'Python' else 'SHELL_USER_FIX'
@@ -98,7 +98,7 @@ class TaskHandler(KernelBase):
         activation = self._extract_tagged_content(response, '<invoke>', '</invoke>')[0]
         return revised, activation
 
-    @api_exception_mechanism(max_retries=3)
+    #@api_exception_mechanism(max_retries=3)
     def inspect_tool(self, script, summary, state):
         sys_msg = self.prompt_config['ERR_SYS']
         user_msg = self.prompt_config['ERR_USER'].format(
@@ -121,7 +121,7 @@ class TaskHandler(KernelBase):
         else:
             print("Tool already present.")
 
-    @api_exception_mechanism(max_retries=3)
+    #@api_exception_mechanism(max_retries=3)
     def request_api_tool(self, description, endpoint, context="No context provided."):
         sys_msg = self.prompt_config['API_SYS'].format(
             openapi_doc=json.dumps(self._filter_openapi(endpoint)),
