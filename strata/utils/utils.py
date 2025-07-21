@@ -84,7 +84,7 @@ def sanitize_string(s: str) -> str:
     s = s.replace("\n", " ")
     s = re.sub(r"\s+", " ", s).strip()
     s = s.replace("\\", "").replace("#", " ")
-    return re.sub(r"([^"]\w\s])\1+", r"\1", s)
+    return re.sub()
 
 
 def mostly_printable(txt: str) -> bool:
