@@ -1,4 +1,4 @@
-:github_url: https://github.com/OS-Copilot/OS-Copilot
+:github_url: https://github.com/LitongYou/test.git
 
 .. image:: _static/logo.png
    :align: center
