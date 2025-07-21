@@ -1,8 +1,8 @@
 import os
 import logging
-from stratapilot.prompts.friday_pt import prompt
+from strata.prompts.friday_pt import prompt
 import json
-from stratapilot.utils import self_learning_print_logging, get_project_root_path, read_json, save_json
+from strata.utils import self_learning_print_logging, get_project_root_path, read_json, save_json
 
 class SelfLearning:
     """
