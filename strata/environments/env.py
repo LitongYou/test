@@ -3,7 +3,7 @@ from strata.environments.base_env import BaseEnv
 from strata.environments import AppleScript
 from strata.environments import PythonJupyterEnv
 from strata.environments import Shell
-from strata.utils.schema import EnvState
+#from strata.utils.schema import EnvState
 
 import os
 import subprocess
