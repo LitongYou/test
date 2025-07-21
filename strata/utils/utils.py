@@ -16,8 +16,8 @@ from tqdm import tqdm
 import tiktoken
 from datasets import load_dataset
 
-from strata.prompts.extraction_prompts import prompt as gpt_prompts
-from strata.utils.llms import OpenAIWrapper
+#from strata.prompts.extraction_prompts import prompt as gpt_prompts
+#from strata.utils.llms import OpenAIWrapper
 
 
 # --- File Operations ---
