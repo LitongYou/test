@@ -1,5 +1,5 @@
 import os
-from strata.utils.config import Config
+from strata.utils.config import GlobalConfig
 from typing import Optional, Union, List
 from strata.utils.schema import EnvState
 
@@ -22,7 +22,7 @@ class BaseEnv:
         """
         self._name: str = self.__class__.__name__
         self.timeout: int = 300
-        working_dir = Config.get_parameter('working_dir')
+        working_dir = GlobalConfig.get_parameter('working_dir')
         if os.path.isabs(working_dir):
             self.working_dir = working_dir
         else:
@@ -116,7 +116,7 @@ class BaseEnv:
         This method is intended to be implemented by subclasses, defining the specific
         actions required to reset the environments.
         """
-        working_dir = Config.get_parameter('working_dir')
+        working_dir = GlobalConfig.get_parameter('working_dir')
         if os.path.isabs(working_dir):
             self.working_dir = working_dir
         else:
