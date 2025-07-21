@@ -1,6 +1,6 @@
 import re
 import json
-from strata.utils import fetch_os_info
+from strata.utils.utils import fetch_os_info
 
 
 class BaseAgent:
