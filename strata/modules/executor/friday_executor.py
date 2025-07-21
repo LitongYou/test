@@ -1,5 +1,5 @@
 from strata.modules.base_module import KernelBase
-from strata.tools.manager.tool_manager import get_open_api_doc_path
+from strata.tools.manager.tool_manager import RegistryHandler
 import re
 import json
 import subprocess
@@ -17,7 +17,7 @@ class TaskHandler(KernelBase):
         self.prompt_config = prompt_config
         self.tool_registry = tool_registry
         self.retry_limit = retry_limit
-        self.api_doc_path = get_open_api_doc_path()
+        self.api_doc_path = RegistryHandler()
         with open(self.api_doc_path) as file:
             self.api_documentation = json.load(file)
 
