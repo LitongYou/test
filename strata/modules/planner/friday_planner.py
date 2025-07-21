@@ -31,7 +31,7 @@ class HelixPlanner(KernelBase):
         self.dependency_graph.clear()
         self.execution_queue.clear()
 
-    @api_exception_mechanism(max_retries=3)
+    # @api_exception_mechanism(max_retries=3)
     def break_down_goal(self, goal, tool_catalog):
         """
         Breaks a user objective into discrete actionable components.
