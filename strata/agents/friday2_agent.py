@@ -4,7 +4,7 @@ import json
 import logging
 import sys
 from strata.prompts.friday_pt import prompt
-from strata.utils import TaskStatusCode, InnerMonologue, ExecutionState, JudgementResult, RepairingResult
+from strata.utils.schema import StatusCode, CognitiveTrace, EvalFrame, ReviewOutcome, PatchOutcome
 
 class FridayAgent(BaseAgent):
     """
@@ -46,8 +46,8 @@ class FridayAgent(BaseAgent):
         )
 
         self.score           = config.score
-        self.task_status     = TaskStatusCode.START
-        self.inner_monologue = InnerMonologue()
+        self.task_status     = StatusCode.BOOT
+        self.inner_monologue = CognitiveTrace()
 
         # Verify OS compatibility
         try:
@@ -81,13 +81,13 @@ class FridayAgent(BaseAgent):
                 print(f"Subtask '{sub}' failed after {self.config.max_repair_iterations} repair attempts.")
                 break
 
-    def self_refining(self, tool_name, execution_state: ExecutionState):
+    def self_refining(self, tool_name, execution_state: EvalFrame):
         """
         Analyze execution results and decide whether to repair, replan, or mark as complete.
 
         Args:
             tool_name (str): Identifier of the subtask or tool used.
-            execution_state (ExecutionState): Encapsulates code, result, error state, and metadata.
+            execution_state (EvalFrame): Encapsulates code, result, error state, and metadata.
 
         Returns:
             tuple:
@@ -173,7 +173,7 @@ class FridayAgent(BaseAgent):
             original_task (object): Context of the top‑level task.
 
         Returns:
-            ExecutionState: Contains result, error status, code, and context.
+            EvalFrame: Contains result, error status, code, and context.
         """
         node = self.planner.tool_node[tool_name]
         desc, node_type = node.description, node.node_type
@@ -205,20 +205,20 @@ class FridayAgent(BaseAgent):
             print("Execution error:", err)
             return
 
-        return ExecutionState(state, node_type, desc, code, result, relevant)
+        return EvalFrame(state, node_type, desc, code, result, relevant)
 
     def judging(self, tool_name, state, code, description):
         """
-        Evaluate the outcome of tool execution and return a JudgementResult.
+        Evaluate the outcome of tool execution and return a ReviewOutcome.
 
         Args:
             tool_name (str): Identifier of the executed tool.
-            state: ExecutionState object containing result and error info.
+            state: EvalFrame object containing result and error info.
             code (str): The code or API call executed.
             description (str): Description of the subtask.
 
         Returns:
-            JudgementResult: Encapsulates status ('Complete', 'Amend', 'Replan'),
+            ReviewOutcome: Encapsulates status ('Complete', 'Amend', 'Replan'),
                              critique message, and a quality score.
         """
         node = self.planner.tool_node[tool_name]
@@ -228,8 +228,8 @@ class FridayAgent(BaseAgent):
             )
         except Exception as err:
             print("Judgement error:", err)
-            return JudgementResult('Error', '', 0)
-        return JudgementResult(status, critique, score)
+            return ReviewOutcome('Error', '', 0)
+        return ReviewOutcome(status, critique, score)
 
     def replanning(self, tool_name, reasoning):
         """
@@ -259,12 +259,12 @@ class FridayAgent(BaseAgent):
             tool_name (str): Identifier of the tool being repaired.
             code (str): Initial code snippet that failed.
             description (str): Description guiding the repair process.
-            state: Last ExecutionState for context.
+            state: Last EvalFrame for context.
             critique (str): Feedback on why the previous attempt failed.
             status (str): Current repair status, expected 'Amend'.
 
         Returns:
-            RepairingResult: Contains new status, updated code, critique, score, and result.
+            PatchOutcome: Contains new status, updated code, critique, score, and result.
         """
         node = self.planner.tool_node[tool_name]
         next_action = node.next_action
@@ -301,10 +301,10 @@ class FridayAgent(BaseAgent):
             else:
                 status = 'Amend'
 
-        return RepairingResult(status, code, critique, score, result)
+        return PatchOutcome(status, code, critique, score, result)
 
     def reset_inner_monologue(self):
         """
         Clear the agent’s internal monologue before starting a new run.
         """
-        self.inner_monologue = InnerMonologue()
+        self.inner_monologue = CognitiveTrace()
