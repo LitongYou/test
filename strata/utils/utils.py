@@ -1,9 +1,19 @@
-import os
+import os, re
 import argparse
+import tiktoken
+import platform
+import copy
+import string
+import random
+import json
 import logging
+import itertools
+import numpy as np
+import tqdm
 import dotenv
 import sys
-from typing import Any, Dict, List, Optional, Union
+from bs4 import BeautifulSoup
+from typing import Any, Dict, List, Optional, Union, Generator
 
 from strata.prompts.general_pt import extraction_prompts as gpt_prompts
 from strata.utils.llms import OpenAIWrapper
@@ -148,7 +158,7 @@ def get_repo_root() -> str:
 
 
 def refine_response_for_gaia(question: str, output: str) -> str:
-    llm = OpenAI()
+    llm = OpenAIWrapper()
     prompt = gpt_prompts['GAIA_ANSWER_EXTRACTOR_PROMPT'].format(question=question, response=output)
     return query_llm('', prompt, llm)
 
@@ -163,7 +173,7 @@ class GaiaDataLoader:
                 if not os.path.exists(cache):
                     raise FileNotFoundError(f"Cache not found: {cache}")
                 args["cache_dir"] = cache
-            self.dataset = load_dataset(**args)
+            #elf.dataset = load_dataset(**args)
         except Exception as exc:
             logging.error(f"Dataset loading failed: {exc}")
             raise
@@ -255,7 +265,7 @@ def assert_os_compatibility(ver: str) -> None:
 # --- Retry Mechanism ---
 def retry_on_failure(max_tries: int = 3):
     def outer(func):
-        @wraps(func)
+        #@wraps(func)
         def wrapped(*args, **kwargs):
             for attempt in range(1, max_tries + 1):
                 try:
