@@ -2,7 +2,7 @@ import re
 import json
 import os
 from dotenv import load_dotenv
-from strata.utils.llms import OpenAI, OLLAMA
+from strata.utils.llms import OpenAIWrapper, OllamaWrapper
 from strata.environments import Env
 from strata.utils import get_os_version
 
